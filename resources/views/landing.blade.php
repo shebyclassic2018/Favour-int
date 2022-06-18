@@ -121,27 +121,23 @@
                             <div class="block-content fs-xs text-justify" style="line-height: 23px">
                                 <div class="flex">
                                     <div class="flex-1">Today</div>
-                                    <div class="">12</div>
-                                </div>
-                                <div class="flex">
-                                    <div class="flex-1">Yesterday</div>
-                                    <div class="">12</div>
+                                    <div class="">{{visits($visits)->period('day')->count()}}</div>
                                 </div>
                                 <div class="flex">
                                     <div class="flex-1">This week</div>
-                                    <div class="">12</div>
+                                    <div class="">{{visits($visits)->period('week')->count()}}</div>
                                 </div>
                                 <div class="flex">
                                     <div class="flex-1">This month</div>
-                                    <div class="">12</div>
+                                    <div class="">{{visits($visits)->period('month')->count()}}</div>
                                 </div>
                                 <div class="flex">
                                     <div class="flex-1">This year</div>
-                                    <div class="">12</div>
+                                    <div class="">{{visits($visits)->period('year')->count()}}</div>
                                 </div>
                                 <div class="flex fw-bold    ">
                                     <div class="flex-1">Total</div>
-                                    <div class="">12</div>
+                                    <div class="">{{visits($visits)->period('total')->count()}}</div>
                                 </div>
                             </div><br>
                         </div>

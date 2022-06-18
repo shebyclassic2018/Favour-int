@@ -1,5 +1,6 @@
 <?php
 
+use App\Services\VisitService;
 use Illuminate\Support\Facades\Route;
 
 
@@ -17,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 # Guest Routes
 
 Route::get('/', function() {
-  return view('landing');
+  $visits = new VisitService();
+  $visits->visitsCounter()->increment();
+  return view('landing', ['visits' => $visits]);
 })->name('welcome');
 
 Route::get('/contact-us', function() {
