@@ -1,0 +1,66 @@
+.counter {
+    position: relative;
+    overflow: hidden;
+}
+.counter span:nth-child(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to top, #cbdfe9, #ebc2c5);
+    animation: snake-right 2s linear infinite;
+}
+
+.counter span:nth-child(2) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to top, #cbdfe9, #ebc2c5);
+    animation: snake-bottom 2s linear infinite;
+    animation-delay: 1s;
+}
+
+.counter span:nth-child(3) {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to top, #cbdfe9, #ebc2c5);
+    animation: snake-left 2s linear infinite;
+    animation-delay: 2s;
+
+}
+.counter span:nth-child(4) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to top, #cbdfe9, #ebc2c5);
+    animation: snake-top 2s linear infinite;
+    animation-delay: 3s;
+}
+
+@keyframes snake-right {
+    0% {transform: translateX(-100%)}
+    100% {transform: translateX(100%)}
+}
+
+@keyframes snake-bottom {
+    0% {transform: translateY(-100%)}
+    100% {transform: translateY(100%)}
+}
+
+@keyframes snake-left {
+    0% {transform: translateX(100%)}
+    100% {transform: translateX(-100%)}
+}
+
+@keyframes snake-top {
+    0% {transform: translateY(100%)}
+    100% {transform: translateY(-100%)}
+}

@@ -1,0 +1,172 @@
+//
+// Deesynertz - UI Framework
+// --------------------------------------------------
+
+// application.scss
+// @import "toastr";
+
+@import "bootstrap-icons";
+
+
+// // nestable2
+// @import '~nestable2/jquery.nestable';
+
+// //menu builder
+// .menu-builder .dd {
+//     position: relative;
+//     display: block;
+//     margin: 0;
+//     padding: 0;
+//     max-width: inherit;
+//     list-style: none;
+//     font-size: 13px;
+//     line-height: 20px;
+// }
+
+// .menu-builder .dd .item_actions {
+//     z-index: 9;
+//     position: absolute;
+//     top: 10px;
+//     right: 10px;
+// }
+
+// .menu-builder .dd .item_actions .edit {
+//     margin-right: 5px;
+// }
+
+// .menu-builder .dd-handle {
+//     display: block;
+//     height: 50px;
+//     margin: 5px 0;
+//     padding: 14px 25px;
+//     color: #333;
+//     text-decoration: none;
+//     font-weight: 700;
+//     border: 1px solid #ccc;
+//     background: #fafafa;
+//     border-radius: 3px;
+//     box-sizing: border-box;
+//     -moz-box-sizing: border-box;
+// }
+
+// .menu-builder .dd-item>button.dd-expand:before {
+//     color: #00314A;
+// }
+
+// .menu-builder .dd-item > button.dd-collapse:before {
+//     color: #FFC107;
+// }
+
+// /* mobile design */
+// .mobile_logo img {
+//     width: 120px;
+// }
+
+// .mobile_bottombar .header_icon {
+//     display: -webkit-box;
+//     display: -ms-flexbox;
+//     display: flex;
+//     -webkit-box-pack: space-evenly;
+//     -ms-flex-pack: space-evenly;
+//     justify-content: space-evenly;
+// }
+
+// .mobile_bottombar {
+//     position: fixed;
+//     left: 0;
+//     bottom: 0;
+//     width: 100%;
+//     background: #fff;
+//     border-top: 1px solid #cacaca;
+//     padding: 12px 0px;
+//     z-index: 8;
+// }
+
+// .bgcolor-dee {
+//     background-color: #00314A;
+// }
+
+// .dee-bg-primary {
+//     background-color: #00314A;
+// }
+
+// .dee-bg-primary:hover,
+// .dee-bg-first:hover,
+// .dee-bg-secondary:hover {
+//     color: #FFC107;
+// }
+
+// .dee-bg-first {
+//     background-color: #00314A;
+// }
+
+// .dee-bg-secondary {
+//     background-color: #033E56;
+// }
+
+
+// .dee-bg-second {
+//     background-color: #FFC107 !important;
+// }
+
+// .dee-bg-second:hover {
+//     color: #00314A;
+// }
+
+// .dee-bg-primary,
+// .dee-bg-secondary,
+// .dee-bg-second,
+// .dee-bg-first {
+//     color: #fff;
+// }
+
+
+// /* text */
+// .dee-text-primary {
+//     color: #00314A !important;
+// }
+
+// .dee-text-secondary {
+//     color: #FFC107;
+// }
+
+// .dee-text-black {
+//     color: #000;
+// }
+
+// .dee-text-primary:hover,
+// .dee-text-secondary:hover,
+// .dee-text-black:hover {
+//     color: #FFF;
+// }
+
+// .dee-text-primary .active,
+// .dee-text-secondary .active,
+// .dee-text-black .active {
+//     color: #FFF;
+// }
+
+
+// /* Button */
+
+// .btn-service {
+//     /* height: 80px; */
+//     /* padding: 2px 0px; */
+// }
+
+// .btn-service a {
+//     padding: 16px 0;
+//     border-radius: 30px;
+// }
+
+// .custom-input {
+//     background-color: transparent;
+//     color: #fff;
+//     border: 1px solid #FFC107
+// }
+
+// .cli-footer {
+//     position: fixed;
+//     bottom: 0;
+// }
+

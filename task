@@ -1,0 +1,214 @@
+HANDLE BELOW TASK 1st Qt 
+
+@if(Cache::has('user-is-online-' . $user->id))
+    <span class="text-success">Online</span>
+@else
+    <span class="text-secondary">Offline</span>
+@endif
+
+COMMENT: ANALYSE/DESIGN & SETUP                                      
+  [x] </> Analyse System (Ngata Homes) Features
+    => Determine Key Features;
+    => View In details Each of Determined Features
+      1: Rent
+      2: Rent-to-own
+      3: Mortgage 
+      4: Investiment
+                                     
+    => Modify {3: Mortgage Feature To Market Place}
+      => Mortigate
+      => Materials
+      => Land                                     
+
+  HACK </> Design Databese
+    => Analyse and Determine the Model
+    => Review Model then Introduce Attributes
+    => Create Relationship with Migration
+    # FIXME => Overwatch and Review Database 2nd Time
+
+  [x] </> Setup Done 10th Jan
+  => Setup the project root;
+  => Review Current Prototype
+  => Review Database
+
+  COMMENT ./
+
+
+TODO:[A] FOR RENT FEATURE                                                                    
+  #COMMENT 1: Property Owner
+      1.1: CREATE  17th Jan, 2022 - 29th, Jan 2022
+        #[x] 1.1.1: TYPE INDIVIDUAL
+          # [x] 17th Jan - 19nd, Jan                
+          A: House with One Unit;
+          B: Unit in Respective House with any Unit exists
+
+          # [x] 20th - 22th                              
+          C: House With House > 1 Unit;
+          D: Unit in Respective House without any Unit exists.
+
+          # HACK Extended Task:  [23rd - 24th]                                           
+            |-> Notification & Alert Before/After Action
+              #[x] 1: sweetalert
+                => Pre-action Like alert before deleting or modify anything.
+              2: notfy
+                => success
+                => error
+                => warning
+            |-> OTP During Registration & Login For {2FA}
+            |-> Package Selection
+                # [x] => Starat package
+                # [x] => Upgrade Package
+                # HACK => Payment
+                    => For start
+                    => For upgrade
+                => Downgrade Package
+            |-> Authorize Gate
+            #[x] Extended Task:                                                             
+            |-> In Account the system should identfy who is loggedin and show The foolowings 
+              => Company Name in aside overlay if any else Account user.
+              => User Title.
+
+            |-> review the flow of how user use our system in visiting [28th].
+
+        #[x] 1.1.2: TYPE COMPANY  [24th - 27th]
+          => Create company ifnormation firts 
+          => Add house under comapny informarton
+
+
+        # TODO:: VERIFY HOUSE IN ADMINISTRATION PANEL
+          # TODO: 01 -> Create Home Managaement Route & Menu
+          # TODO: 02 -> Veify House
+          
+          # STEP
+            1: In Edit Form
+              
+            2: check if has one Unit or More
+              2.1 if has one
+              2.2 if has More
+
+            3: Add Coordinate
+
+            4: Submit
+
+
+        # COMMENT 1.1.3: TYPE ASSOCIATIONA [28th - 29th] 
+
+
+      #COMMENT 1.2: ACCESS
+      #COMMENT 1.3: MANAGE
+
+                
+  #COMMENT 2: Dalalli
+
+  #COMMENT 3: Agent
+
+  #COMMENT 4: Map Activation
+  TODO ./
+
+
+TODO: [B] FOR RENT-TO-OWN FEATURE
+
+TODO: [C] FOR MARKET PLACE FEATURE
+
+
+
+
+
+
+
+
+
+
+
+<?php
+
+namespace App\Http\Controllers\Frontend;
+
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
+
+
+class SmsController extends Controller
+{
+    public function getCountryCodeForIp()
+    {
+        $response = Http::post('https://sms.opestechnologies.co.tz/api/get-api-key', [
+            'name' => 'eddic',
+            'password' => 'eddy11',
+        ]);
+
+        $quizzes = json_decode($response->body());
+
+        return $quizzes->success->token;
+
+        // dd($quizzes->success->token);
+
+
+        // $header = $this->header('Authorization', '');
+        // if (Str::startsWith($header, 'Bearer ')) {
+        //     return Str::substr($header, 7);
+        // }
+
+
+
+        // dd(json_decode($token->body()));
+
+
+      
+
+
+        // $token = Http::post('https://sms.opestechnologies.co.tz/api/messages/send', [
+        //     'content-type' => 'application/json',
+        //     'Accept' => 'application/json',
+        //     'Authorization' => 'Bearer ' . $quizzes->success->token,
+        //     'message' => $message
+        // ])->$message;
+
+        // dd(json_decode($token->body()));
+
+        // return response('dada');
+    }
+
+
+    public function sendMsg()
+    {
+       $token = $this->getCountryCodeForIp();
+
+        // $message =  [
+        //     'sender' => 'OPES',
+        //     'channel' => 'TH05',
+        //     'text' => 'Laravel Test',
+        //     'msisdn' => '255744004897',
+        //     'msg_id' => 2
+        // ];
+
+        $request = Request::create('https://sms.opestechnologies.co.tz/api/messages/send', 'POST');
+        $request->headers->set('content-type', 'application/json');
+        $request->headers->set('Authorization', 'Bearer ' . $token);
+        $res = app()->handle($request);
+        $profile_details = json_decode($res->getContent()); // convert to json object
+
+
+        // return response()->json(['profile' => $profile_details], $res->getStatusCode());
+
+        // $cb = Http::post('https://sms.opestechnologies.co.tz/api/messages/send', [
+        //     'content-type' => 'application/json',
+        //     'Authorization' => 'Bearer ' . $token,
+        //     'message' => [
+        //         'sender' => 'OPES',
+        //         'channel' => 'TH05',
+        //         'text' => 'Laravel Test',
+        //         'msisdn' => '255676604897',
+        //         'msg_id' => 2
+        //         ]
+        // ]);
+
+        dd($profile_details);
+        
+
+    }
+}
+
+

@@ -1,0 +1,89 @@
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Route;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    /**
+     * The path to the "home" route for your application.
+     *
+     * This is used by Laravel authentication to redirect users after login.
+     *
+     * @var string
+     */
+    public const HOME = '/app/dashboard';
+
+    /**
+     * The controller namespace for the application.
+     *
+     * When present, controller route declarations will automatically be prefixed with this namespace.
+     *
+     * @var string|null
+     */
+    // protected $namespace = 'App\\Http\\Controllers';
+
+    /**
+     * Define your route model bindings, pattern filters, etc.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->configureRateLimiting();
+
+        $this->routes(function () {
+            Route::prefix('api')
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/api.php'));
+
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/web.php'));
+
+
+            // # custom Routes
+            // Route::middleware('web','auth', 'role:super-admin,admin,agent')
+            //     ->prefix('app')
+            //     ->name('app.')
+            //     ->namespace($this->namespace)
+            //     ->group(base_path('routes/backend.php'));
+
+            // Route::middleware('web', 'auth', 'role:property-owner')
+            //     ->prefix('account')
+            //     ->name('account.')
+            //     ->namespace($this->namespace)
+            //     ->group(base_path('routes/owner.php'));
+
+            // Route::middleware('web', 'auth', 'role:dalali')
+            //     ->prefix('account')
+            //     ->name('account.')
+            //     ->namespace($this->namespace)
+            //     ->group(base_path('routes/dalali.php'));
+
+            // Route::middleware('web', 'auth', 'role:tenant')
+            //     ->prefix('account')
+            //     ->name('account.')
+            //     ->namespace($this->namespace)
+            //     ->group(base_path('routes/tenant.php'));
+        });
+    }
+
+    /**
+     * Configure the rate limiters for the application.
+     *
+     * @return void
+     */
+    protected function configureRateLimiting()
+    {
+        RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60);
+        });
+    }
+}

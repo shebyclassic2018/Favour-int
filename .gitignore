@@ -1,0 +1,50 @@
+/node_modules
+/vendor
+
+
+fee_payment.log
+
+/public/hot
+/public/storage
+/storage/*.key
+
+/config/debugbar.php
+
+/public/video
+/public/media/videos
+# /public/image/mno
+
+# /storage/app/public/documents
+/storage/app/public/documents/certification
+/storage/app/public/documents/contracts
+/storage/app/public/documents/houses
+/storage/app/public/documents/staff
+/storage/app/public/avatars
+/storage/app/public/properties/houses
+/storage/app/public/properties/marker
+/storage/app/public/various
+
+# /storage/app/public/json/*
+# /storage/app/public/json/waitingTime.json
+# /storage/app/public/json/cellulant-feedback.json
+# /storage/app/public/json/cellulant-request.json
+# /storage/app/public/json/appointment.json
+
+# /public/storage/json/waitingTime.json
+# /public/storage/json/cellulant-feedback.json
+# /public/storage/json/cellulant-request.json
+# /public/storage/json/appointment.json
+
+
+/storage/framework
+/storage/logs
+
+/storage/debugbar
+/.env
+.env.backup
+.idea/
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
