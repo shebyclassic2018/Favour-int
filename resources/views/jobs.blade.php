@@ -21,7 +21,7 @@
             <div class="col-md-6">
                 <div class="block"><br><div class="col-12 fs-xs">Read the application form</div>
                     <ul>
-                        <li class="fs-xs pt-2"><a href="{{asset('pdf/FAVOUR-INTERNATIONAL-ADVERT.pdf')}}" target="appform">FAVOUR-INTERNATIONAL-ADVERT</a><br><a href="#" class="rounded-pill mt-2 bg-warning px-3 py-1 text-white"><span class="fa fa-download"></span> Download</a></li>
+                        <li class="fs-xs pt-2"><a href="{{asset('pdf/advert.pdf')}}" target="appform">FAVOUR-INTERNATIONAL-ADVERT</a><br><a href="{{route('advert')}}" class="rounded-pill mt-2 bg-warning px-3 py-1 text-white"><span class="fa fa-download"></span> Download</a></li>
                     </ul><br>
                 </div>
             </div>
@@ -29,7 +29,7 @@
         <div class="row">
             
             <div class="col-12">
-                <iframe src="{{asset('pdf/FAVOUR-INTERNATIONAL-ADVERT.pdf')}}" frameborder="0" class="form-control" name="appform" style="height: 600px"></iframe>
+                <iframe src="{{asset('pdf/advert.pdf')}}" frameborder="0" class="form-control" name="appform" style="height: 600px"></iframe>
             </div>
         </div>
     </div>

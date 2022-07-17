@@ -147,6 +147,32 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="block">
+                            <div class="block-header block-header-default bg-warning text-white">
+                                <div class="block-title">EVENTS</div>
+                            </div>
+                            <div class="block-content fs-xs text-justify" style="line-height: 23px">
+                                <table class="table table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th>Event</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Charity day</td>
+                                            <td>12-01-2022</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div><br>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block">
                             <div class="block-content">
                                 <div>
                                     <img src="{{ asset('image/img1.jpg') }}" class="img-fluid"
@@ -158,19 +184,7 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="block">
-                            <div class="block-content">
-                                <div>
-                                    <img src="{{ asset('image/img3.jpeg') }}" class="img-fluid"
-                                        style="height:  250px; width: 100%" alt="">
-                                </div>
-                                <div class="fs-xs">Education for Brighter Future</div>
-                            </div><br>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

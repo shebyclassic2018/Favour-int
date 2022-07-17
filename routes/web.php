@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomePage;
 use App\Services\VisitService;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -17,11 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 # Guest Routes
 
-Route::get('/', function() {
-  $visits = new VisitService();
-  $visits->visitsCounter()->increment();
-  return view('landing', ['visits' => $visits]);
-})->name('welcome');
+Route::get('/', [HomePage::class, 'index'])->name('welcome');
+Route::get('/admin', [HomePage::class, 'admin'])->name('admin');
 
 Route::get('/contact-us', function() {
   return view('contact-us');
@@ -35,9 +35,7 @@ Route::get('/gallery', function() {
   return view('gallery');
 })->name('gallery');
 
-Route::get('/about-us', function() {
-  return view('aboutus');
-})->name('aboutus');
+Route::get('/about-us', [HomePage::class, 'aboutus'])->name('aboutus');
 
 Route::get('/admission', function() {
   return view('admission');
@@ -46,3 +44,15 @@ Route::get('/admission', function() {
 Route::get('/jobs', function() {
   return view('jobs');
 })->name('jobs');
+
+Route::get('/advert', function() {
+  return response()->download(public_path('pdf/advert.pdf', 'FAVOUR-INTERNATIONAL-ADVERT.pdf'));
+})->name('advert');
+
+Route::get('/fn2', function() {
+  return response()->download(public_path('pdf/fn2.pdf'), 'APPLICATION-FORM-FAVOUR-PRE-AND-PRIMARY-FINAL2.pdf');
+})->name('fn2');
+
+Route::get('/pr2', function() {
+  return response()->download(public_path('pdf/pr2.pdf'), 'APPLICATION-FORM-FAVOUR-PRE-AND-PRIMARY-2.pdf');
+})->name('pr2');

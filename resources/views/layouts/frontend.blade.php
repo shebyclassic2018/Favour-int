@@ -201,7 +201,15 @@
             border-top-right-radius: 5px;
             border-top-left-radius: 5px;
         }
+        .wsize {
+            height: calc(100% - 120px);
+        }
 
+        @media only screen and (max-width: 768px) {
+            .wsize {
+            height: calc(100% - 120px);
+        }
+        }
     </style>
 
     @stack('css_after')
@@ -219,7 +227,7 @@
 <body id="top" onload="loadWindow();">
 
     @include('includes.header')
-    <div class="overflow-y-auto" style="height: calc(100% - 163px)">
+    <div class="overflow-y-auto wsize">
         <div class="h-100 overflow-y-auto">
             @yield('content')
             @include('includes.footer')

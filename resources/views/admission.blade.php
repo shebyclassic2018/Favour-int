@@ -20,8 +20,8 @@
             <div class="col-md-6">
                 <div class="block"><br><div class="col-12 fs-xs">Read the application form</div>
                     <ul>
-                        <li class="fs-xs pt-2"><a href="{{asset('pdf/fn2.pdf')}}" target="appform">APPLICATION-FORM-FAVOUR-PRE-AND-PRIMARY-FINAL2</a><br><a href="#" class="rounded-pill mt-2 bg-warning px-3 py-1 text-white"><span class="fa fa-download"></span> Download</a></li>
-                        <li class="fs-xs pt-2"><a href="{{asset('pdf/pr2.pdf')}}" target="appform">APPLICATION-FORM-FAVOUR-PRE-AND-PRIMARY-2</a><br><a href="#" class="rounded-pill mt-2 bg-warning px-3 py-1 text-white"><span class="fa fa-download"></span> Download</a></li>
+                        <li class="fs-xs pt-2"><a href="{{asset('pdf/fn2.pdf')}}" target="appform">APPLICATION-FORM-FAVOUR-PRE-AND-PRIMARY-FINAL2</a><br><a href="{{route('fn2')}}" class="rounded-pill mt-2 bg-warning px-3 py-1 text-white"><span class="fa fa-download"></span> Download</a></li>
+                        <li class="fs-xs pt-2"><a href="{{asset('pdf/pr2.pdf')}}" target="appform">APPLICATION-FORM-FAVOUR-PRE-AND-PRIMARY-2</a><br><a href="{{route('pr2')}}" class="rounded-pill mt-2 bg-warning px-3 py-1 text-white"><span class="fa fa-download"></span> Download</a></li>
                     </ul><br>
                 </div>
             </div>

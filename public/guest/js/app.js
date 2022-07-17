@@ -4,7 +4,7 @@ $(function () {
     // On window's load
     $(window).on('load', function () {
 
-        populateColorPlates();
+        // populateColorPlates();
         setTimeout(function () {
             $(".page_loader").fadeOut("fast");
             $('link[id="style_sheet"]').attr('href', 'assets/css/skins/default.css');

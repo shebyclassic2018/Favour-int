@@ -1,5 +1,5 @@
 <!-- mobile bottom bar -->
-@include('layouts.mobile.bottom-bar')
+{{-- @include('layouts.mobile.bottom-bar') --}}
 
 <!-- mobile menu -->
 @include('layouts..mobile.menu')

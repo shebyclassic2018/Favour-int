@@ -5,9 +5,9 @@
 @endpush
 @section('content')
     <div class="container">
+        <h4 class="py-3 border-bottom"><span class="fa fa-lock"></span> PRIVACY POLICY</h4>
         <div class="content">
             <!-- Simple Gallery -->
-            <h2 class="content-heading">Simple</h2>
             <div class="row items-push js-gallery img-fluid-100">
                 @for($i = 0; $i < 10; $i++)
                 <div class="col-md-6 col-lg-4 col-xl-3 animated fadeIn">
