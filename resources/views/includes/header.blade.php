@@ -17,6 +17,9 @@
         <a href="{{route('aboutus')}}" class="p-3 @if (request()->is('about-us')) active @endif"><span class="fa fa-list"></span> ABOUT US</a>
         <a href="{{route('contactus')}}" class="p-3  @if (request()->is('contact-us')) active @endif"><span class="fa fa-phone-alt"></span> CONTACT US</a>
         <a href="{{route('privacypolice')}}" class="p-3  @if (request()->is('privacy-policy')) active @endif"><span class="fa fa-lock"></span> PRIVACY POLICY</a>
+        @if (!isset(Auth::user()->id))
+          <a href="{{route('login')}}" class="p-3  @if (request()->is('login')) active @endif"><span class="fa fa-sign-in"></span> LOGIN</a>
+        @endif
     </nav>
   </header>
   <header class="d-sm-block d-md-none" style="background: #333;">

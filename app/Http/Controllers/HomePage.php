@@ -15,7 +15,7 @@ class HomePage extends Controller
 {
     //
     function index() {
-        $data['events'] = Event::paginate(5);
+        $data['events'] = Event::orderBy('event_date', 'DESC')->paginate(5);
         $visits = new VisitService();
         $visits->visitsCounter()->increment();
         $data['visits'] = $visits;
@@ -23,7 +23,7 @@ class HomePage extends Controller
     }
 
     function aboutus() {
-        $data['staffs'] = User::with(['designation', 'role', 'department'])->paginate();
+        $data['staffs'] = staffs()->paginate();
         return view('aboutus', $data);
     }
 

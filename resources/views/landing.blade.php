@@ -159,10 +159,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Charity day</td>
-                                            <td>12-01-2022</td>
-                                        </tr>
+                                        @foreach ($events as $row)
+                                          @if (IsActiveEvent($row->event_date))
+                                          <tr>
+                                              <td>{{$row->descriptions}}</td>
+                                              <td>{{date('dS M Y', strtotime($row->event_date))}}</td>
+                                          </tr>
+                                          @endif  
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div><br>

@@ -19,8 +19,8 @@ class Staffs extends Migration
             $table->foreignId('department_id')->constrained()->cascadeOnUpdate();
             $table->foreignId('designation_id')->constrained()->cascadeOnUpdate();
             $table->string('name');
-            $table->string('email');
-            $table->string('phone');
+            $table->string('email')->unique();
+            $table->string('phone')->unique();
             $table->timestamps();
         });
     }
