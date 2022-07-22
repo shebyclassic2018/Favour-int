@@ -19,6 +19,8 @@ class Login extends Controller
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             return redirect('admin/staffs');
+        } else {
+            return redirect('login')->with('alert', 'Email email address or password is incorrect');
         }
     }
 

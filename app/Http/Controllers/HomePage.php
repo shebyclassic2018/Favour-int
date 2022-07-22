@@ -10,6 +10,7 @@ use App\Models\Designation;
 use Illuminate\Http\Request;
 use App\Services\VisitService;
 use App\Http\Controllers\Controller;
+use App\Models\Gallery;
 
 class HomePage extends Controller
 {
@@ -19,6 +20,7 @@ class HomePage extends Controller
         $visits = new VisitService();
         $visits->visitsCounter()->increment();
         $data['visits'] = $visits;
+        $data['images'] = Gallery::orderBy('id', 'DESC')->paginate(5);
         return view('landing', $data);
     }
 

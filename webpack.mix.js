@@ -16,7 +16,7 @@ mix // .js('resources/js/app.js', 'public/js')
 
     /* CSS */
     // .sass('resources/sass/social-icon.scss', 'public/css/social-icon.css')
-    .sass('resources/sass/addtocartbtn.scss', 'public/css/sliderf.css')
+    .sass('resources/sass/upload.scss', 'public/css/upload.css')
     // .sass('resources/sass/button.scss', 'public/css/button.css')
     // .sass('resources/sass/partiners.scss', 'public/css/partiners.css')
     // .sass('resources/sass/main.scss', 'public/css/oneui.css')

@@ -9,6 +9,7 @@
     <style>
         #slidy-container {
             width: 100%;
+            height: 500px;
             margin: 0 auto 15px auto;
             overflow: hidden;
         }
@@ -20,40 +21,13 @@
         <h4 class="py-3 border-bottom"><span class="fa fa-home"></span> HOME</h4>
         <div class="row">
             <div class="col-md-12">
-                {{-- <div class="carousel js-carousel">
-                    <figure class="carousel__frame js-carousel__frame">
-                        <div class="carousel__slides js-carousel__slides">
-                            <img src="https://images.unsplash.com/photo-1510154011132-f48b8eabd172?fit=crop&w=1920&h=960&q=80"
-                                alt="" class="carousel__item">
-                            <img src="https://images.unsplash.com/photo-1532979142617-bbb2fe39ad52?fit=crop&w=1920&h=960&q=80"
-                                alt="" class="carousel__item">
-                            <img src="https://images.unsplash.com/photo-1521624002551-9ea092b0bc52?fit=crop&w=1920&h=960&q=80"
-                                alt="" class="carousel__item">
-                            <img src="https://images.unsplash.com/photo-1517260739337-6799d239ce83?fit=crop&w=1920&h=960&q=80"
-                                alt="" class="carousel__item">
-                            <img src="https://images.unsplash.com/photo-1534531173927-aeb928d54385?fit=crop&w=1920&h=960&q=80"
-                                alt="" class="carousel__item">
-                        </div>
-
-                        <button class="carousel__prev js-carousel__prev"><i class="fa fa-chevron-left"></i></button>
-                        <button class="carousel__next js-carousel__next"><i class="fa fa-chevron-right"></i></button>
-                    </figure>
-                </div> --}}
-
-                <div id="slidy-container">
-                    <figure id="slidy">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/antelope-canyon.jpg"
-                            alt="Photograph of orange rock formations in Antelope Canyon, Arizona by eliyasj"
-                            data-caption="Antelope Canyon, Arizona">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/canyonlands.jpg"
-                            alt="Broad vista photograph of Canyonlands National Park, Arizona, taken by Charles Martin"
-                            data-caption="Canyonlands Vista, Arizona">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/mesa-arch.jpg"
-                            alt="Photograph looking through Mesa Arch at a sunrise in Moab, Utah, taken by Krasimir Ganchev"
-                            data-caption="Mesa Arch sunrise, Moab, Utah">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/wave-canyon.jpg"
-                            alt="Photograph of wave rock formations in Canyonlands National Park, Arizona, taken by Vanessa Kay"
-                            data-caption="Canyonlands, Arizona">
+                <div id="slidy-container" style="height: 500px">
+                    <figure id="slidy" >
+                        @foreach ($images as $row)
+                        <img class="img-fluid h-100" src="{{asset('image/uploads/' . $row->path)}}"
+                        alt="{{$row->caption}}"
+                        data-caption="{{$row->caption}}">
+                        @endforeach
                     </figure>
                 </div>
             </div>

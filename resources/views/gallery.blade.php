@@ -5,27 +5,17 @@
 @endpush
 @section('content')
     <div class="container">
-        <h4 class="py-3 border-bottom"><span class="fa fa-lock"></span> PRIVACY POLICY</h4>
+        <h4 class="py-3 border-bottom"><span class="fa fa-photo"></span> GALLERY</h4>
         <div class="content">
             <!-- Simple Gallery -->
             <div class="row items-push js-gallery img-fluid-100">
-                @for($i = 0; $i < 10; $i++)
+                @foreach($images as $row)
                 <div class="col-md-6 col-lg-4 col-xl-3 animated fadeIn">
-                    <a class="img-link img-link-zoom-in img-thumb img-lightbox w-100" href="assets/media/photos/photo2@2x.jpg">
-                        <img class="img-fluid" style="height: 100%; width: 100%" src="{{asset('image/img1.jpg')}}" alt="">
+                    <a class="img-link img-link-zoom-in img-thumb img-lightbox w-100" href="{{asset('image/uploads/' . $row->path)}}">
+                        <img class="img-fluid" style="height: 100%; width: 100%" src="{{asset('image/uploads/' . $row->path)}}" alt="">
                     </a>
                 </div>
-                <div class="col-md-6 col-lg-4 col-xl-3 animated fadeIn">
-                    <a class="img-link img-link-zoom-in img-thumb img-lightbox w-100" href="assets/media/photos/photo3@2x.jpg">
-                        <img class="img-flui" style="height: 100%; width: 100%" src="{{asset('image/img2.jpeg')}}" alt="">
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3 animated fadeIn">
-                    <a class="img-link img-link-zoom-in img-thumb img-lightbox w-100" href="{{asset('image/img3.jpeg')}}">
-                        <img class="img-fluid" style="height: 100%; width: 100%" src="{{asset('image/img3.jpeg')}}" alt="">
-                    </a>
-                </div>
-                @endfor
+                @endforeach
             </div>
             <!-- END Simple Gallery -->
         </div>

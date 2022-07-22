@@ -46,6 +46,6 @@ if (!function_exists('WholeToday')) {
 
 if (!function_exists('IsActiveEvent')) {
     function IsActiveEvent($event_date) {
-        return (strtotime($event_date) >= strtotime(WholeToday())) ? true : false;
+        return (strtotime($event_date) >= strtotime(WholeToday()->addDays(-1))) ? true : false;
     }
 }

@@ -21,6 +21,7 @@ class User extends Authenticatable implements HasMedia
      */
     // protected $fillable = ['role_id', 'name', 'email','phone', 'password'];
     protected $guarded = ['id'];
+    protected $table = 'staffs';
 
     /**
      * The attributes that should be hidden for arrays.

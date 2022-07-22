@@ -4,6 +4,7 @@ use App\Services\VisitService;
 use App\Http\Controllers\Login;
 use App\Http\Controllers\HomePage;
 use App\Http\Controllers\AdminPage;
+use App\Models\Gallery;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth']], 
   Route::get('/delete-designation/{name?}/{id?}', [AdminPage::class, 'deletedesignation'])->name('deletedesignation');
   Route::get('/delete-department/{name?}/{id?}', [AdminPage::class, 'deletedepartment'])->name('deletedepartment');
   Route::get('/delete-event/{id?}', [AdminPage::class, 'deleteevent'])->name('deleteevent');
+  Route::get('/gallery', [AdminPage::class, 'gallery'])->name('gallery');
+  Route::post('/imageuploader', [AdminPage::class, 'imageuploader'])->name('imageuploader');
 });
 Route::post('/postLogin', [Login::class, 'login'])->name('postlogin');
 Route::post('/logout', [Login::class, 'logout'])->name('logout');
@@ -50,7 +53,8 @@ Route::get('/privacy-policy', function () {
 })->name('privacypolice');
 
 Route::get('/gallery', function () {
-  return view('gallery');
+  $data['images'] = Gallery::orderBy('id', 'DESC')->get();
+  return view('gallery', $data);
 })->name('gallery');
 
 Route::get('/about-us', [HomePage::class, 'aboutus'])->name('aboutus');

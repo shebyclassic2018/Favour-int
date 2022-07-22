@@ -72,6 +72,9 @@
 
                     <div class="card bg-glass">
                         <div class="card-body px-4 py-5 px-md-5">
+                            @if (!is_null(\Session::get('alert')))
+                                <div class="alert alert-danger">Either email address or password is incorrect</div>
+                            @endif
                             <form method="POST" action="{{ route('postlogin') }}">
                                 @csrf
                                 <!-- Email input -->
