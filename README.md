@@ -5,12 +5,13 @@
 
 <br></br>
 
-## Create database on your server
-```bat
-database_name = favour-int
-```
+## Steps to follow after downloading zipped file
+- Unzip the file to a specific directory you want
+- Open the root directory in command prompt (cmd)
+- Create database, dbname = 'favour-int' 
 
-## Run these commands first
+
+## Run these commands
 ```bat
 composer update
 ```
