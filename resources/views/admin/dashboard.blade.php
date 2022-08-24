@@ -75,7 +75,7 @@
                 <li class="nav-main-item {{ Request::is('app/collection/*') ? 'open' : '' }} mt-1"
                     style="background: #444">
                     <a class="nav-main-link text-white nav-main-link-submenu fs-xs" data-toggle="submenu"
-                        aria-haspopup="true" aria-expanded="false" href="#">
+                        aria-haspopup="true" aria-expanded="false" href="{{route('admin.gallery')}}">
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                         <i class="nav-main-link-icon text-warning fa fa-photo" aria-hidden="true"></i>
                         <span class="nav-main-link-name">Gallery</span>

@@ -13,23 +13,189 @@
             margin: 0 auto 15px auto;
             overflow: hidden;
         }
+
+        .slider {
+            margin: 0 auto;
+            max-width: 940px;
+        }
+
+        .slide_viewer {
+            height: 440px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide_group {
+            height: 100%;
+            position: relative;
+            width: 100%;
+        }
+
+        .slide {
+            display: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            object-fit: cover
+        }
+
+        .slide:first-child {
+            display: block;
+        }
+
+        .slide:nth-of-type(1) {
+            background: #D7A151;
+        }
+
+        .slide:nth-of-type(2) {
+            background: #F4E4CD;
+        }
+
+        .slide:nth-of-type(3) {
+            background: #C75534;
+        }
+
+        .slide:nth-of-type(4) {
+            background: #D1D1D4;
+        }
+
+        .slide_buttons {
+            left: 0;
+            position: absolute;
+            right: 0;
+            text-align: center;
+        }
+
+        a.slide_btn {
+            color: #474544;
+            font-size: 42px;
+            margin: 0 0.175em;
+            -webkit-transition: all 0.4s ease-in-out;
+            -moz-transition: all 0.4s ease-in-out;
+            -ms-transition: all 0.4s ease-in-out;
+            -o-transition: all 0.4s ease-in-out;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .slide_btn.active,
+        .slide_btn:hover {
+            color: #428CC6;
+            cursor: pointer;
+        }
+
+        .directional_nav {
+            height: 100px;
+            margin: 0 auto;
+            max-width: 940px;
+            position: relative;
+            top: -340px;
+        }
+
+        .previous_btn {
+            bottom: 0;
+            left: 100px;
+            margin: auto;
+            position: absolute;
+            top: 0;
+        }
+
+        .next_btn {
+            bottom: 0;
+            margin: auto;
+            position: absolute;
+            right: 100px;
+            top: 0;
+        }
+
+        .previous_btn,
+        .next_btn {
+            cursor: pointer;
+            height: 65px;
+            opacity: 0.5;
+            -webkit-transition: opacity 0.4s ease-in-out;
+            -moz-transition: opacity 0.4s ease-in-out;
+            -ms-transition: opacity 0.4s ease-in-out;
+            -o-transition: opacity 0.4s ease-in-out;
+            transition: opacity 0.4s ease-in-out;
+            width: 65px;
+        }
+
+        .previous_btn:hover,
+        .next_btn:hover {
+            opacity: 1;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .previous_btn {
+                left: 50px;
+            }
+
+            .next_btn {
+                right: 50px;
+            }
+        }
+
+        .tag {
+            height: 25px;
+            width: 50px;
+            border-radius: 50%;
+            border: 3px dashed white
+        }
+        marquee a{
+            background: rgb(215, 213, 212);
+            color: rgb(108, 108, 108);
+            margin-right: 5px;
+            padding: 8px;
+        }
     </style>
 @endpush
-
 @section('content')
     <div class="container flow-y-auto">
         <h4 class="py-3 border-bottom"><span class="fa fa-home"></span> HOME</h4>
+        <div class="row mb-3">
+            <div class="col-12">
+                <marquee behavior="" direction="">
+                    @foreach ($events as $row)
+                    @if (IsActiveEvent($row->event_date))
+                    <a href="#event">{{$row->descriptions}} - {{date('dS M Y', strtotime($row->event_date))}}</a>
+                    @endif
+                    @endforeach
+                </marquee>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
-                <div id="slidy-container" style="height: 500px">
-                    <figure id="slidy" >
+                {{-- <div id="slidy-container" style="height: 500px">
+                    <figure id="slidy">
                         @foreach ($images as $row)
-                        <img class="img-fluid h-100" src="{{asset('image/uploads/' . $row->path)}}"
-                        alt="{{$row->caption}}"
-                        data-caption="{{$row->caption}}">
+                            <img class="img-fluid h-100" src="{{ asset('image/uploads/' . $row->path) }}"
+                                alt="{{ $row->caption }}" data-caption="{{ $row->caption }}">
                         @endforeach
                     </figure>
+                </div> --}}
+                <div class="slider">
+                    <div class="slide_viewer">
+                        <div class="slide_group">
+                            @foreach ($images as $row)
+                                <img class="slide img-fluid h-100" src="{{ asset('image/uploads/' . $row->path) }}"
+                                    alt="{{ $row->caption }}" data-caption="{{ $row->caption }}">
+                            @endforeach
+                        </div>
+                    </div>
+                </div><!-- End // .slider -->
+
+                <div class="slide_buttons">
                 </div>
+
+                <div class="directional_nav">
+                    <div class="previous_btn" title="Previous">
+
+                    </div>
+                    <div class="next_btn" title="Next">
+
+                    </div>
+                </div><!-- End // .directional_nav -->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
             </div>
             <div class="col-md-6">
                 <div class="block">
@@ -95,23 +261,23 @@
                             <div class="block-content fs-xs text-justify" style="line-height: 23px">
                                 <div class="flex">
                                     <div class="flex-1">Today</div>
-                                    <div class="">{{visits($visits)->period('day')->count()}}</div>
+                                    <div class="">{{ visits($visits)->period('day')->count() }}</div>
                                 </div>
                                 <div class="flex">
                                     <div class="flex-1">This week</div>
-                                    <div class="">{{visits($visits)->period('week')->count()}}</div>
+                                    <div class="">{{ visits($visits)->period('week')->count() }}</div>
                                 </div>
                                 <div class="flex">
                                     <div class="flex-1">This month</div>
-                                    <div class="">{{visits($visits)->period('month')->count()}}</div>
+                                    <div class="">{{ visits($visits)->period('month')->count() }}</div>
                                 </div>
                                 <div class="flex">
                                     <div class="flex-1">This year</div>
-                                    <div class="">{{visits($visits)->period('year')->count()}}</div>
+                                    <div class="">{{ visits($visits)->period('year')->count() }}</div>
                                 </div>
                                 <div class="flex fw-bold    ">
                                     <div class="flex-1">Total</div>
-                                    <div class="">{{visits($visits)->period('total')->count()}}</div>
+                                    <div class="">{{ visits($visits)->period('total')->count() }}</div>
                                 </div>
                             </div><br>
                         </div>
@@ -129,17 +295,22 @@
                                     <thead>
                                         <tr>
                                             <th>Event</th>
-                                            <th>Date</th>
+                                            <th colspan="2">Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($events as $row)
-                                          @if (IsActiveEvent($row->event_date))
-                                          <tr>
-                                              <td>{{$row->descriptions}}</td>
-                                              <td>{{date('dS M Y', strtotime($row->event_date))}}</td>
-                                          </tr>
-                                          @endif  
+                                            @if (IsActiveEvent($row->event_date))
+                                                <tr>
+                                                    <td>{{ $row->descriptions }}</td>
+                                                    <td>{{ date('dS M Y', strtotime($row->event_date)) }}</td>
+                                                    <td>
+                                                        @if (IsNewEvent($row->create_at))
+                                                        <div class="fading tag bg-danger flex-center text-white">New </div>  
+                                                        @endif
+                                                    </td> 
+                                                </tr>
+                                            @endif
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -162,7 +333,7 @@
                     </div>
                 </div>
 
-                
+
             </div>
         </div>
     </div>
@@ -197,181 +368,98 @@
         });
     </script>
 
+
+
+
     <script>
-        var cssSlidy = function(newOptions) {
-            var options = (function() {
-                    var mergedOptions = {},
-                        defaultOptions = {
-                            timeOnSlide: 3,
-                            timeBetweenSlides: 1,
-                            slidyContainerSelector: '#slidy-container', // name of slider container
-                            slidySelector: '#slidy', // name of slider
-                            slidyDirection: 'left', // options: left, right
-                            fallbackFunction: function() {},
-                            cssAnimationName: 'slidy',
-                            captionSource: 'data-caption', // options: data-caption, alt, none
-                            captionBackground: 'rgba(0,0,0,0.3)',
-                            captionColor: '#fff',
-                            captionFont: 'Avenir, Avenir Next, Droid Sans, DroidSansRegular, Corbel, Tahoma, Geneva, sans-serif',
-                            captionPosition: 'bottom', // options: top, bottom
-                            captionAppear: 'slide', //  options: slide, perm, fade
-                            captionSize: '1.6rem',
-                            captionPadding: '.6rem'
-                        };
-                    for (var option in defaultOptions) mergedOptions[option] = defaultOptions[option];
-                    for (var option in newOptions) mergedOptions[option] = newOptions[option];
-                    return mergedOptions;
-                })(),
-                CS = this;
-            CS.animationString = 'animation';
-            CS.hasAnimation = false;
-            CS.keyframeprefix = '';
-            CS.domPrefixes = 'Webkit Moz O Khtml'.split(' ');
-            CS.pfx = '';
-            CS.element = document.getElementById(options.slidySelector.replace('#', ''));
-            CS.init = (function() {
-                // browser supports keyframe animation w/o prefixes
-                if (CS.element.style.animationName !== undefined) CS.hasAnimation = true;
-                // browser supports keyframe animation w/ prefixes
-                if (CS.hasAnimation === false) {
-                    for (var i = 0; i < CS.domPrefixes.length; i++) {
-                        if (CS.element.style[CS.domPrefixes[i] + 'AnimationName'] !== undefined) {
-                            CS.pfx = domPrefixes[i];
-                            CS.animationString = pfx + 'Animation';
-                            CS.keyframeprefix = '-' + pfx.toLowerCase() + '-';
-                            CS.hasAnimation = true;
-                            // determines CSS prefix required for CSS animations
-                            break;
-                        }
-                    }
+        $('.slider').each(function() {
+            var $this = $(this);
+            var $group = $this.find('.slide_group');
+            var $slides = $this.find('.slide');
+            var bulletArray = [];
+            var currentIndex = 0;
+            var timeout;
+
+            function move(newIndex) {
+                var animateLeft, slideLeft;
+
+                advance();
+
+                if ($group.is(':animated') || currentIndex === newIndex) {
+                    return;
                 }
-                if (CS.hasAnimation === true) {
-                    var images = CS.element.getElementsByTagName("img"),
-                        L = images.length,
-                        fig = document.createElement('figure'),
-                        who, temp;
-                    while (L) {
-                        temp = fig.cloneNode(false);
-                        who = images[--L];
-                        // wraps all images in the slider with <figure> tags
-                        if (options.captionSource !== "none")
-                            caption = who.getAttribute(options.captionSource);
-                        who.parentNode.insertBefore(temp, who);
-                        if (caption !== null) {
-                            content = document.createElement('figcaption');
-                            content.innerHTML = caption;
-                            // places captions in each <figure> element, if required
-                        }
-                        temp.appendChild(who);
-                        if (caption !== null) {
-                            temp.appendChild(content);
-                        }
-                    }
-                    var figs = CS.element.getElementsByTagName("figure");
-                    var firstFig = figs[0]; // get the first figure inside the "slidy" element.
-                    figWrap = firstFig.cloneNode(true); // copy it.
-                    CS.element.appendChild(figWrap); // add the clone to the end of the images
-                    var imgCount = images
-                        .length, // count the number of images in the slide, including the new cloned element
-                        totalTime = (options.timeOnSlide + options.timeBetweenSlides) * (imgCount -
-                            1
-                            ), // calculate the total length of the animation by multiplying the number of _actual_ images by the amount of time for both static display of each image and motion between them
-                        slideRatio = (options.timeOnSlide / totalTime) *
-                        100, // determine the percentage of time an induvidual image is held static during the animation
-                        moveRatio = (options.timeBetweenSlides / totalTime) *
-                        100, // determine the percentage of time for an individual movement
-                        basePercentage = 100 /
-                        imgCount, // work out how wide each image should be in the slidy, as a percentage.
-                        position = 0, // set the initial position of the slidy element
-                        css = document.createElement("style"); // start marking a new style sheet
-                    // creating css style tag
-                    css.type = "text/css";
-                    css.id = options.slidySelector.replace('#', '') + "-css";
-                    css.innerHTML += options.slidyContainerSelector + " { overflow: hidden; }\n";
-                    css.innerHTML += options.slidySelector +
-                        " { text-align: left; margin: 0; font-size: 0; position: relative; width: " + (
-                            imgCount * 100) + "%;  }\n"; // set the width for the inner slider container
-                    css.innerHTML += options.slidySelector +
-                        " figure { float: left; margin: 0; position: relative; display: inline-block; width: " +
-                        basePercentage +
-                        "%; height: auto; }\n"; // set the width and size pf the inner <figure> elements
-                    css.innerHTML += options.slidySelector + " figure img { width: 100%; }\n";
-                    css.innerHTML += options.slidySelector +
-                        " figure figcaption { position: absolute; width: 100%; background-color: " + options
-                        .captionBackground + "; color: " + options.captionColor + "; font-family: " + options
-                        .captionFont + ";";
 
-                    var captions = document.getElementsByTagName("figcaption");
-                    var captionHeight = captions[0].offsetHeight * 2 + parseInt(window.getComputedStyle(
-                        captions[0]).fontSize, 10);
-                    if (options.captionPosition == "top") {
-                        switch (options.captions) {
-                            case 'fade':
-                                css.innerHTML += " top: 0; opacity: 0;";
-                                break;
-                            case 'slide':
-                                css.innerHTML += " top: -" + captionHeight + "px; ";
-                                break;
-                            default:
-                                css.innerHTML += " top: 0;";
-                        }
-                    } else {
-                        switch (options.captionAppear) {
-                            case 'fade':
-                                css.innerHTML += " bottom: 0; opacity: 0;";
-                                break;
-                            case 'slide':
-                                css.innerHTML += " bottom: -" + captionHeight + "px; ";
-                                break;
-                            default:
-                                css.innerHTML += " bottom: 0;";
-                        }
-                    }
-                    css.innerHTML += " font-size: " + options.captionSize + "; padding: " + options
-                        .captionPadding + "; " + keyframeprefix + "transition: .5s; }\n";
-                    css.innerHTML += options.slidySelector + ":hover figure figcaption { opacity: 1; ";
-                    if (options.captionPosition == "top") {
-                        css.innerHTML += " top: 0px;";
-                    } else {
-                        css.innerHTML += " bottom: 0px;";
-                    }
-                    css.innerHTML += " }\n";
-                    css.innerHTML += "@" + keyframeprefix + "keyframes " + options.cssAnimationName + " {\n";
-                    if (options.slidyDirection == "right") {
-                        for (i = imgCount - 1; i > 0; i--) { // 
-                            position += slideRatio; // make the keyframe the position of the image
-                            css.innerHTML += position + "% { left: -" + (i * 100) + "%; }\n";
-                            position += moveRatio; // make the postion for the _next_ slide
-                            css.innerHTML += position + "% { left: -" + ((i - 1) * 100) + "%; }\n";
-                        }
-                    } else { // the slider is moving to the left    
-                        for (i = 0; i < (imgCount - 1); i++) { // 
-                            position += slideRatio; // make the keyframe the position of the image
-                            css.innerHTML += position + "% { left: -" + (i * 100) + "%; }\n";
-                            position += moveRatio; // make the postion for the _next_ slide
-                            css.innerHTML += position + "% { left: -" + ((i + 1) * 100) + "%; }\n";
-                        }
-                    }
-                    css.innerHTML += "}\n";
-                    css.innerHTML += options.slidySelector + " { ";
-                    if (options.slidyDirection == "right") {
-                        css.innerHTML += "left: " + imgCount * 100 + "%"
-                    } else {
-                        css.innerHTML += "left: 0%; "
-                    }
+                bulletArray[currentIndex].removeClass('active');
+                bulletArray[newIndex].addClass('active');
 
-                    css.innerHTML += keyframeprefix + "transform: translate3d(0,0,0); " + keyframeprefix +
-                        "animation: " + totalTime + "s " + options.cssAnimationName +
-                        " infinite; }\n"; // call on the completed keyframe animation sequence
-                    // place css style tag
-                    if (options.cssLocation !== undefined) options.cssLocation.appendChild(css);
-                    else document.body.appendChild(css);
+                if (newIndex > currentIndex) {
+                    slideLeft = '100%';
+                    animateLeft = '-100%';
                 } else {
-                    // fallback function
-                    options.fallbackFunction();
+                    slideLeft = '-100%';
+                    animateLeft = '100%';
                 }
-            })();
-        }
-        cssSlidy();
+
+                $slides.eq(newIndex).css({
+                    display: 'block',
+                    left: slideLeft
+                });
+                $group.animate({
+                    left: animateLeft
+                }, function() {
+                    $slides.eq(currentIndex).css({
+                        display: 'none'
+                    });
+                    $slides.eq(newIndex).css({
+                        left: 0
+                    });
+                    $group.css({
+                        left: 0
+                    });
+                    currentIndex = newIndex;
+                });
+            }
+
+            function advance() {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    if (currentIndex < ($slides.length - 1)) {
+                        move(currentIndex + 1);
+                    } else {
+                        move(0);
+                    }
+                }, 4000);
+            }
+
+            $('.next_btn').on('click', function() {
+                if (currentIndex < ($slides.length - 1)) {
+                    move(currentIndex + 1);
+                } else {
+                    move(0);
+                }
+            });
+
+            $('.previous_btn').on('click', function() {
+                if (currentIndex !== 0) {
+                    move(currentIndex - 1);
+                } else {
+                    move(3);
+                }
+            });
+
+            $.each($slides, function(index) {
+                var $button = $('<a class="slide_btn">&bull;</a>');
+
+                if (index === currentIndex) {
+                    $button.addClass('active');
+                }
+                $button.on('click', function() {
+                    move(index);
+                }).appendTo('.slide_buttons');
+                bulletArray.push($button);
+            });
+
+            advance();
+        });
     </script>
 @stop

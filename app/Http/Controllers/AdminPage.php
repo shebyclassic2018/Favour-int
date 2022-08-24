@@ -32,7 +32,11 @@ class AdminPage extends Controller
     }
     function addnewstaffs(Request $req)
     {
-        $create = User::create([
+        
+        $create = User::updateOrCreate([
+            'email' => $req->email,
+            'phone' => $req->phone
+        ],[
             'role_id' => $req->role,
             'department_id' => $req->department,
             'designation_id' => $req->designation,
@@ -46,7 +50,7 @@ class AdminPage extends Controller
         } else {
             Session::flash('alert-danger', 'Staff failed to be created');
         }
-        return view('admin.new-staff');
+        return redirect(route('admin.newstaffs'));
     }
 
     static function  designations()
@@ -75,7 +79,9 @@ class AdminPage extends Controller
 
     function adddesignation(Request $req)
     {
-        $create = Designation::create([
+        $create = Designation::updateOrCreate([
+            'name' => $req->name
+        ],[
             'name' => $req->name,
             'abbr' => $req->abbr
         ]);
@@ -89,7 +95,9 @@ class AdminPage extends Controller
 
     function adddepartment(Request $req)
     {
-        $create = Department::create([
+        $create = Department::updateOrCreate([
+            'name' => $req->name
+        ],[
             'name' => $req->name,
             'abbr' => $req->abbr
         ]);

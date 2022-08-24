@@ -62,9 +62,20 @@
                     @if (!isset(Auth::user()->id))
                         <a href="{{ route('login') }}"
                             class="nav-link fs-xs  @if (request()->is('login')) active @endif"><span
-                                class="fa fa-sign-in"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Login</a>
+                                class="fa fa-sign-in"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Login</a>
                     @endif
                 </li>
+                @if (isset(Auth::user()->id))
+                    @if (Auth::user()->role->name === 'Admin')
+                    <li class="nav-item{{ request()->is('login') ? ' active' : '' }}">
+                        @if (!request()->is('admin/*'))
+                            <a href="{{ route('admin.staffs') }}"
+                                class="nav-link fs-xs  @if (request()->is('admin/staffs')) active @endif"><span
+                                    class="fa fa-dashboard"></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dashboard</a>
+                        @endif
+                    </li>
+                    @endif
+                @endif
 
             </ul>
         </div>

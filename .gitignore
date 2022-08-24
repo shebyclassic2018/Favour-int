@@ -12,7 +12,7 @@ fee_payment.log
 
 /public/video
 /public/media/videos
-# /public/image/mno
+/public/image
 
 # /storage/app/public/documents
 /storage/app/public/documents/certification

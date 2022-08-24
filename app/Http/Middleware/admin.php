@@ -3,11 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-
 
 class Roles
 {
@@ -23,9 +21,9 @@ class Roles
         if (!Auth::check()) {
             return redirect()->route('welcome');
         }
-    
+
         $roles = array_slice(func_get_args(), 2); // [default, admin, manager]
-        
+
         foreach ($roles as $role) {
             try {
                 if (Auth::user()->role->slug == $role) {
@@ -36,7 +34,9 @@ class Roles
             }
         }
 
-        Toastr::info('Access Denied', Auth::user()->role->name .' does not have any of the necessary access right'); // custom flash class
-        return redirect()->route('welcome');
+        // Toastr::info('Access Denied', Auth::user()->role->slug .' does not have any of the necessary access right'); // custom flash class
+        // $this->redirectTo(Auth::user()->role->slug);
+        return route('welcome');
+
     }
 }

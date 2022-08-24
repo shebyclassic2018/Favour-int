@@ -49,3 +49,9 @@ if (!function_exists('IsActiveEvent')) {
         return (strtotime($event_date) >= strtotime(WholeToday()->addDays(-1))) ? true : false;
     }
 }
+
+if (!function_exists('IsNewEvent')) {
+    function IsNewEvent($event_date) {
+        return (strtotime($event_date) <= strtotime(WholeToday()->addDays(-7))) ? true : false;
+    }
+}
