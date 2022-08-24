@@ -10,7 +10,7 @@
 - Create database, dbname = 'favour-int' 
 - Open the root directory in command prompt (cmd)
 
-## Run these commands
+## Run these commands in command prompt
 ```bat
 composer update
 ```
