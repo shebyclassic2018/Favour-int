@@ -40,7 +40,7 @@ fee_payment.log
 /storage/logs
 
 /storage/debugbar
-/.env
+.env.example
 .env.backup
 .idea/
 .phpunit.result.cache
