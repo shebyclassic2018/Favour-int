@@ -7,9 +7,8 @@
 
 ## Steps to follow after downloading zipped file
 - Unzip the file to a specific directory you want
-- Open the root directory in command prompt (cmd)
 - Create database, dbname = 'favour-int' 
-
+- Open the root directory in command prompt (cmd)
 
 ## Run these commands
 ```bat
