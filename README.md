@@ -1,4 +1,4 @@
-<p align="center"><img src="public/image/logo/logo.png" width="400"></p>
+<p align="center"><img src="public/image/logo/logo.png" width="400" style="background: white"></p>
 <br>
 
 ## Favour International pre and primary school
