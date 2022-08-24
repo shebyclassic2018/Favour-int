@@ -1,7 +1,5 @@
-<p align="center"><a href="https://homes.ngata.co.tz" target="_blank"><img src="public/media/brand/192x192-logo.png" width="400"></a></p>
+<p align="center"><img src="public/image/logo/logo.png" width="400"></p>
 <br>
-
-
 
 ## Favour International pre and primary school
 
